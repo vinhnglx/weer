@@ -1,5 +1,3 @@
-require "tempo/version"
-
-module Tempo
-  # Your code goes here...
-end
+require 'tempo/version'
+require 'tempo/cli'
+require 'tempo/error'
