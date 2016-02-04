@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'tempo/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'tempo'
+  spec.name          = 'vejr'
   spec.version       = Tempo::VERSION
   spec.authors       = ['Vinh Nguyen']
   spec.email         = ['vinh.nglx@gmail.com']
