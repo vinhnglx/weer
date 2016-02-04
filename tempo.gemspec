@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   # Add runtime dependencies
   spec.add_dependency 'thor'
   spec.add_dependency 'httparty'
+  spec.add_dependency 'terminal-table'
 end
