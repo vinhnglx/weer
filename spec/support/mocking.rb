@@ -3,7 +3,7 @@ RSpec.configure do |config|
   config.before(:each) do
 
     url = 'https://query.yahooapis.com/v1/public/yql?env=store://datatables.org/alltableswithkeys&format=json&q='
-    city = 'Da Nang'
+    city = 'da nang'
     yql = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"#{city}\")"
     fake_data = File.open(File.dirname(__FILE__) + '/fixtures/' + 'weather.json', 'rb').read
 

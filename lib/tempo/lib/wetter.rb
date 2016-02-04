@@ -19,7 +19,7 @@ class Wetter
   #
   # Returns nothing
   def initialize(city)
-    @city = city
+    @city = city.downcase
   end
 
   # Make an http request to Yahoo Weather API
@@ -52,12 +52,20 @@ class Wetter
   #     +------------+-----+------+------------+
   #
   # Return the table object
-  def parse_forecast(raw_fore_casts)
+  def parse_forecast(raw_fore_casts, temperature)
     forecast_rows = []
-    raw_fore_casts.each do |r|
-      forecast_rows << [r['date'], r['low'], r['high'], r['text']]
+
+    if temperature == 'f'
+      raw_fore_casts.each do |r|
+        forecast_rows << [r['date'], r['low'], r['high'], r['text']]
+      end
+    elsif temperature == 'c'
+      raw_fore_casts.each do |r|
+        forecast_rows << [r['date'], fahren_to_cel(r['low']), fahren_to_cel(r['high']), r['text']]
+      end
     end
-    Terminal::Table.new headings: ['Date', 'Low (F)', 'High (F)', 'Weather'], rows: forecast_rows
+
+    Terminal::Table.new headings: ['Date', 'Low', 'High', 'Weather'], rows: forecast_rows
   end
 
   # Get the forecasts
@@ -87,4 +95,18 @@ class Wetter
   def yql_city
     "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"#{city}\")"
   end
+
+  private
+
+    # Convert Fahrenheit to Celsius
+    #
+    # temp - The temperature
+    #
+    # Examples
+    #
+    #   fahren_to_cel(72)
+    #   # => 22
+    def fahren_to_cel(temp)
+      (temp.to_i - 32) * 5 / 9
+    end
 end

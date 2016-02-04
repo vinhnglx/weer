@@ -15,14 +15,15 @@ module Tempo
       option :city, aliases: '-c', banner: 'Your city', required: true
       option :all, aliases: '-a', banner: 'Display all weather information (wind, atmosphere, astronomy, forecast).'
       def weather
+        temperature = options[:temperature].downcase
         wetter = Wetter.new options[:city]
         response = wetter.connect
 
         raise FakeURLInvalid if response['query']['results'].nil?
         forecasts = wetter.forecast response
 
-        puts "====== The forecast of #{options[:city].upcase!} in the next comming days ======"
-        puts wetter.parse_forecast forecasts
+        puts "====== The forecast(#{options[:temperature]}) of #{options[:city].upcase!} in the next comming days ======"
+        puts wetter.parse_forecast forecasts, temperature
       end
     end
   end

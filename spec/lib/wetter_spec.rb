@@ -6,13 +6,13 @@ describe Wetter do
   context '.initialize' do
     it 'returns an constructor of Wetter object' do
       expect(wetter).to be_an_instance_of Wetter
-      expect(wetter.city).to eq 'Da Nang'
+      expect(wetter.city).to eq 'da nang'
     end
   end
 
   context '.yql_city' do
     it 'returns an YQL query' do
-      expect(wetter.yql_city).to eq "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"Da Nang\")"
+      expect(wetter.yql_city).to eq "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"da nang\")"
     end
   end
 
@@ -35,7 +35,7 @@ describe Wetter do
   context '.parse_forecast' do
     let(:response) { wetter.connect }
     let(:raw_forecast) { wetter.forecast(response) }
-    let(:parse_forecasts) { wetter.parse_forecast(raw_forecast) }
+    let(:parse_forecasts) { wetter.parse_forecast(raw_forecast, 'f') }
 
     it 'returns a Terminal::Table object' do
       expect(parse_forecasts).to be_an_instance_of Terminal::Table
