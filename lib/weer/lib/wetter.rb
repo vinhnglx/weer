@@ -31,14 +31,14 @@ class Wetter
   #
   # Returns the Hash response
   def connect
-    url = BASE_URL + yql_city + FORMAT_RESPONSE
+    url = URI.parse(URI.encode((BASE_URL + yql_city + FORMAT_RESPONSE).strip))
     request = HTTParty.get(url)
     request.code == 200 ? JSON.parse(request.body) : nil
   end
 
   # Parse the forecasts to table
   #
-  # raw_fore_casts - The raw JSON forecasts
+  # raw_fore_casts - The raw HASH forecasts
   #
   # Examples
   #
@@ -65,21 +65,95 @@ class Wetter
       end
     end
 
-    Terminal::Table.new headings: ['Date', 'Low', 'High', 'Weather'], rows: forecast_rows
+    Terminal::Table.new headings: ['Date', 'Low', 'High', 'Weather'], rows: forecast_rows, style: { width: 80 }
+  end
+
+  # Parse the wind to table
+  #
+  # raw_wind - The raw HASH wind
+  #
+  # Examples
+  #
+  #   parse_wind({"chill"=>"68", "direction"=>"330", "speed"=>"5"})
+  #   # =>
+  #     +-------+-----------+-------+
+  #     | Chill | Direction | Speed |
+  #     +-------+-----------+-------+
+  #     | 68    | 330       | 5     |
+  #     +-------+-----------+-------+
+  #
+  # Returns the table object
+  def parse_wind(raw_wind)
+    wind_row = []
+
+    wind_row << [raw_wind['chill'], raw_wind['direction'], raw_wind['speed']]
+
+    Terminal::Table.new headings: ['Chill', 'Direction', 'Speed'], rows: wind_row, style: { width: 80 }
+  end
+
+  # Parse the atmosphere to table
+  #
+  # raw_atmosphere  - The raw HASH atmosphere
+  #
+  # Examples
+  #
+  #   parse_atmosphere({"humidity"=>"88", "pressure"=>"30.15", "rising"=>"0", "visibility"=>"4.35"})
+  #   # =>
+  #     +----------+----------+--------+------------+
+  #     | Humidity | Pressure | Rising | Visibility |
+  #     +----------+----------+--------+------------+
+  #     | 88       | 30.15    | 0      | 4.35       |
+  #     +----------+----------+--------+------------+
+  #
+  # Returns the table object
+  def parse_atmosphere(raw_atmosphere)
+    atmosphere_row = []
+
+    atmosphere_row << [raw_atmosphere['humidity'], raw_atmosphere['pressure'], raw_atmosphere['rising'], raw_atmosphere['visibility']]
+
+    Terminal::Table.new headings: ['Humidity', 'Pressure', 'Rising', 'Visibility'], rows: atmosphere_row, style: { width: 80 }
   end
 
   # Get the forecasts
   #
-  # response - The raw JSON response
+  # response - The raw HASH response
   #
   # Examples
   #
   #   forecast({"query"=>{"count"=>1, "created"...)})
   #   # => {"code"=>"12", "date"=>"4 Feb 2016", "day"=>"Thu", "high"=>"72", "low"=>"66", "text"=>"Rain"}
   #
-  # Return the raw forecasts data
+  # Returns the raw forecasts data
   def forecast(response)
     response['query']['results']['channel']['item']['forecast']
+  end
+
+  # Get the wind
+  #
+  # response  - The raw HASH response
+  #
+  # Examples
+  #
+  #   wind({"query"=>{"count"=>1, "created"...)})
+  #   # => {"chill"=>"68", "direction"=>"330", "speed"=>"5"}
+  #
+  # Returns the raw wind data
+  def wind(response)
+    response['query']['results']['channel']['wind']
+  end
+
+  # Get the atmosphere
+  #
+  # response  - The raw HASH response
+  #
+  # Examples
+  #
+  #   atmosphere({"query"=>{"count"=>1, "created"...)})
+  #   # => {"humidity"=>"88", "pressure"=>"30.15", "rising"=>"0", "visibility"=>"4.35"}
+  #
+  # Returns the raw atmosphere data
+  def atmosphere(response)
+    response['query']['results']['channel']['atmosphere']
   end
 
   # Generate yql (Yahoo Query Language) for a city
