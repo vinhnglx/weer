@@ -1,3 +1,5 @@
+require 'date'
+
 module Weer
   module CLI
     class Weather < Thor
@@ -24,6 +26,13 @@ module Weer
 
         puts "====== The forecast(#{options[:temperature]}) of #{options[:city].upcase!} in the next comming days ======"
         puts wetter.parse_forecast forecasts, temperature
+
+        if options[:all]
+          wind = wetter.wind response
+
+          puts "====== The wind power of (#{Date.today.to_s}) ======"
+          puts wetter.parse_wind wind
+        end
       end
     end
   end

@@ -1,5 +1,6 @@
 require 'httparty'
 require 'terminal-table'
+require 'byebug'
 
 class Wetter
   # Set attributes reader
@@ -38,7 +39,7 @@ class Wetter
 
   # Parse the forecasts to table
   #
-  # raw_fore_casts - The raw JSON forecasts
+  # raw_fore_casts - The raw HASH forecasts
   #
   # Examples
   #
@@ -68,18 +69,55 @@ class Wetter
     Terminal::Table.new headings: ['Date', 'Low', 'High', 'Weather'], rows: forecast_rows
   end
 
+  # Parse the winds to table
+  #
+  # raw_winds - The raw HASH winds
+  #
+  # Examples
+  #
+  #   parse_wind({"chill"=>"68", "direction"=>"330", "speed"=>"5"})
+  #   # =>
+  #     +-------+-----------+-------+
+  #     | Chill | Direction | Speed |
+  #     +-------+-----------+-------+
+  #     | 68    | 330       | 5     |
+  #     +-------+-----------+-------+
+  #
+  # Returns the table object
+  def parse_wind(raw_wind)
+    wind_row = []
+
+    wind_row << [raw_wind['chill'], raw_wind['direction'], raw_wind['speed']]
+
+    Terminal::Table.new headings: ['Chill', 'Direction', 'Speed'], rows: wind_row
+  end
+
   # Get the forecasts
   #
-  # response - The raw JSON response
+  # response - The raw HASH response
   #
   # Examples
   #
   #   forecast({"query"=>{"count"=>1, "created"...)})
   #   # => {"code"=>"12", "date"=>"4 Feb 2016", "day"=>"Thu", "high"=>"72", "low"=>"66", "text"=>"Rain"}
   #
-  # Return the raw forecasts data
+  # Returns the raw forecasts data
   def forecast(response)
     response['query']['results']['channel']['item']['forecast']
+  end
+
+  # Get the wind
+  #
+  # response  - The raw HASH response
+  #
+  # Examples
+  #
+  #   wind({"query"=>{"count"=>1, "created"...)})
+  #   # => {"chill"=>"68", "direction"=>"330", "speed"=>"5"}
+  #
+  # Returns the raw wind data
+  def wind(response)
+    response['query']['results']['channel']['wind']
   end
 
   # Generate yql (Yahoo Query Language) for a city
