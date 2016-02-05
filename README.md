@@ -1,5 +1,7 @@
 # Weer
 
+[![Build Status](https://travis-ci.org/vinhnglx/tempo.svg?branch=master)](https://travis-ci.org/vinhnglx/tempo)
+
 A simple CLI display the weather information.
 
 ## Installation
