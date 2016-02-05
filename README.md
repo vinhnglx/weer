@@ -26,6 +26,11 @@ Options:
 Display the weather information of a city
 ```
 
+### Screenshot
+
+!['Weer'](https://cloud.githubusercontent.com/assets/1997137/12840884/91489082-cc19-11e5-8de6-0ad1e568a1ba.png)
+
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/vinhnglx/weer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
