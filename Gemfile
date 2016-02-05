@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in tempo.gemspec
+# Specify your gem's dependencies in weer.gemspec
 gemspec
