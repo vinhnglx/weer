@@ -1,6 +1,7 @@
 # Weer
 
-[![Build Status](https://travis-ci.org/vinhnglx/weer.svg?branch=master)](https://travis-ci.org/vinhnglx/weer)
+[![Build Status](https://travis-ci.org/vinhnglx/weer.svg?branch=develop)](https://travis-ci.org/vinhnglx/weer)
+[![Coverage Status](https://coveralls.io/repos/github/vinhnglx/weer/badge.svg?branch=develop)](https://coveralls.io/github/vinhnglx/weer?branch=develop)
 
 A simple CLI display the weather information.
 
