@@ -1,7 +1,9 @@
 require 'webmock/rspec'
-require 'weer'
+require 'coveralls'
 require 'byebug'
+require 'weer'
 
 WebMock.disable_net_connect!(allow_localhost: true)
+Coveralls.wear!
 
 Dir[__dir__ + '/support/**/*.rb'].each { |f| require f }
