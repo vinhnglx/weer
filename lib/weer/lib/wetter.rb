@@ -31,7 +31,7 @@ class Wetter
   #
   # Returns the Hash response
   def connect
-    url = BASE_URL + yql_city + FORMAT_RESPONSE
+    url = URI.parse(URI.encode((BASE_URL + yql_city + FORMAT_RESPONSE).strip))
     request = HTTParty.get(url)
     request.code == 200 ? JSON.parse(request.body) : nil
   end
