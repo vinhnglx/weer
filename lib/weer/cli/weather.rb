@@ -1,4 +1,4 @@
-module Tempo
+module Weer
   module CLI
     class Weather < Thor
       # Display weather information of a city
