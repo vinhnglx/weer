@@ -5,6 +5,7 @@ describe Wetter do
   let(:response) { wetter.connect }
   let(:raw_forecast) { wetter.forecast(response) }
   let(:raw_wind) { wetter.wind(response) }
+  let(:raw_atmosphere) { wetter.atmosphere(response) }
 
   context '.initialize' do
     it 'returns an constructor of Wetter object' do
@@ -40,6 +41,16 @@ describe Wetter do
       expect(raw_wind).to include("chill")
       expect(raw_wind).to include("direction")
       expect(raw_wind).to include("speed")
+    end
+  end
+
+  context '.atmosphere' do
+    it 'returns the raw atmosphere data' do
+      expect(raw_atmosphere).to be_a_kind_of Hash
+      expect(raw_atmosphere).to include("humidity")
+      expect(raw_atmosphere).to include("pressure")
+      expect(raw_atmosphere).to include("rising")
+      expect(raw_atmosphere).to include("visibility")
     end
   end
 

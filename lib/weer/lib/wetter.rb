@@ -1,6 +1,5 @@
 require 'httparty'
 require 'terminal-table'
-require 'byebug'
 
 class Wetter
   # Set attributes reader
@@ -66,12 +65,12 @@ class Wetter
       end
     end
 
-    Terminal::Table.new headings: ['Date', 'Low', 'High', 'Weather'], rows: forecast_rows
+    Terminal::Table.new headings: ['Date', 'Low', 'High', 'Weather'], rows: forecast_rows, style: { width: 80 }
   end
 
-  # Parse the winds to table
+  # Parse the wind to table
   #
-  # raw_winds - The raw HASH winds
+  # raw_wind - The raw HASH wind
   #
   # Examples
   #
@@ -89,7 +88,30 @@ class Wetter
 
     wind_row << [raw_wind['chill'], raw_wind['direction'], raw_wind['speed']]
 
-    Terminal::Table.new headings: ['Chill', 'Direction', 'Speed'], rows: wind_row
+    Terminal::Table.new headings: ['Chill', 'Direction', 'Speed'], rows: wind_row, style: { width: 80 }
+  end
+
+  # Parse the atmosphere to table
+  #
+  # raw_atmosphere  - The raw HASH atmosphere
+  #
+  # Examples
+  #
+  #   parse_atmosphere({"humidity"=>"88", "pressure"=>"30.15", "rising"=>"0", "visibility"=>"4.35"})
+  #   # =>
+  #     +----------+----------+--------+------------+
+  #     | Humidity | Pressure | Rising | Visibility |
+  #     +----------+----------+--------+------------+
+  #     | 88       | 30.15    | 0      | 4.35       |
+  #     +----------+----------+--------+------------+
+  #
+  # Returns the table object
+  def parse_atmosphere(raw_atmosphere)
+    atmosphere_row = []
+
+    atmosphere_row << [raw_atmosphere['humidity'], raw_atmosphere['pressure'], raw_atmosphere['rising'], raw_atmosphere['visibility']]
+
+    Terminal::Table.new headings: ['Humidity', 'Pressure', 'Rising', 'Visibility'], rows: atmosphere_row, style: { width: 80 }
   end
 
   # Get the forecasts
@@ -118,6 +140,20 @@ class Wetter
   # Returns the raw wind data
   def wind(response)
     response['query']['results']['channel']['wind']
+  end
+
+  # Get the atmosphere
+  #
+  # response  - The raw HASH response
+  #
+  # Examples
+  #
+  #   atmosphere({"query"=>{"count"=>1, "created"...)})
+  #   # => {"humidity"=>"88", "pressure"=>"30.15", "rising"=>"0", "visibility"=>"4.35"}
+  #
+  # Returns the raw atmosphere data
+  def atmosphere(response)
+    response['query']['results']['channel']['atmosphere']
   end
 
   # Generate yql (Yahoo Query Language) for a city
