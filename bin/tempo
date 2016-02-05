@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'tempo'
-
-Tempo::CLI::Weather.start(ARGV)

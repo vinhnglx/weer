@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Tempo do
+describe Weer do
   it 'has a version number' do
-    expect(Tempo::VERSION).not_to be nil
+    expect(Weer::VERSION).not_to be nil
   end
 end

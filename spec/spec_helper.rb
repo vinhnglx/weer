@@ -1,5 +1,5 @@
 require 'webmock/rspec'
-require 'tempo'
+require 'weer'
 require 'byebug'
 
 WebMock.disable_net_connect!(allow_localhost: true)
