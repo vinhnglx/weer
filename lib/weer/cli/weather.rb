@@ -24,14 +24,21 @@ module Weer
         raise FakeURLInvalid if response['query']['results'].nil?
         forecasts = wetter.forecast response
 
-        puts "====== The forecast(#{options[:temperature]}) of #{options[:city].upcase!} in the next comming days ======"
-        puts wetter.parse_forecast forecasts, temperature
+        puts Rainbow("============= The forecast(#{options[:temperature]}) of #{options[:city].upcase!} in the next comming days =============").green
+        puts Rainbow(wetter.parse_forecast forecasts, temperature).orange
 
         if options[:all]
           wind = wetter.wind response
 
-          puts "====== The wind power of (#{Date.today.to_s}) ======"
-          puts wetter.parse_wind wind
+          puts "\n"
+          puts Rainbow("========================= The wind power of #{Date.today.to_s} =========================").green
+          puts Rainbow(wetter.parse_wind wind).orange
+
+          atmosphere = wetter.atmosphere response
+
+          puts "\n"
+          puts Rainbow("========================= The atmosphere of #{Date.today.to_s} =========================").green
+          puts Rainbow(wetter.parse_atmosphere atmosphere).orange
         end
       end
     end
