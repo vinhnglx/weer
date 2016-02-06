@@ -28,7 +28,8 @@ Display the weather information of a city
 
 ### Screenshot
 
-!['Weer'](https://cloud.githubusercontent.com/assets/1997137/12840884/91489082-cc19-11e5-8de6-0ad1e568a1ba.png)
+![Weer](https://cloud.githubusercontent.com/assets/1997137/12868202/0c922b48-cd34-11e5-9c1c-12d961087831.png)
+
 
 
 ## Contributing
