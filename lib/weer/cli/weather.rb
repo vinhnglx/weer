@@ -24,7 +24,7 @@ module Weer
         raise FakeURLInvalid if response['query']['results'].nil?
         forecasts = wetter.forecast response
 
-        puts Rainbow("============= The forecast(#{options[:temperature]}) of #{options[:city].upcase!} in the next comming days =============").green
+        puts Rainbow("============= The forecast(#{options[:temperature]}) of #{options[:city].upcase!} in the next coming days =============").green
         puts Rainbow(wetter.parse_forecast forecasts, temperature).orange
 
         if options[:all]
