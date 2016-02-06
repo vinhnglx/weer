@@ -1,39 +1,40 @@
-# Tempo
+# Weer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tempo`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Build Status](https://travis-ci.org/vinhnglx/weer.svg?branch=develop)](https://travis-ci.org/vinhnglx/weer)
+[![Coverage Status](https://coveralls.io/repos/github/vinhnglx/weer/badge.svg?branch=develop)](https://coveralls.io/github/vinhnglx/weer?branch=develop)
 
-TODO: Delete this and the text above, and describe your gem
+A simple CLI display the weather information. You also can use [Weer-bot](https://github.com/vinhnglx/slack-weer-bot) through Slack to know the weather information.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'tempo'
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tempo
+$ gem install weer
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+Usage:
+  weer weather -c, --city=Your city
 
-## Development
+Options:
+  -t, [--temperature=F(Fahrenheit) or C(Celsius).]
+                                                                                        # Default: F
+  -c, --city=Your city
+  -a, [--all=Display all weather information (wind, atmosphere, astronomy, forecast).]
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Display the weather information of a city
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Screenshot
+
+![Weer](https://cloud.githubusercontent.com/assets/1997137/12868202/0c922b48-cd34-11e5-9c1c-12d961087831.png)
+
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/vinhnglx/tempo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/vinhnglx/weer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

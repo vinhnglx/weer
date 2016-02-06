@@ -1,2 +1,9 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'tempo'
+require 'webmock/rspec'
+require 'coveralls'
+require 'byebug'
+require 'weer'
+
+WebMock.disable_net_connect!(allow_localhost: true)
+Coveralls.wear!
+
+Dir[__dir__ + '/support/**/*.rb'].each { |f| require f }

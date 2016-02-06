@@ -1,0 +1,1 @@
+class FakeURLInvalid < StandardError; end

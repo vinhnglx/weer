@@ -1,0 +1,110 @@
+{
+ "query": {
+  "count": 1,
+  "created": "2016-02-04T04:31:19Z",
+  "lang": "en-US",
+  "results": {
+   "channel": {
+    "title": "Yahoo! Weather - Da Nang, VN",
+    "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Da_Nang__VN/*http://weather.yahoo.com/forecast/VMXX0028_f.html",
+    "description": "Yahoo! Weather for Da Nang, VN",
+    "language": "en-us",
+    "lastBuildDate": "Thu, 04 Feb 2016 11:00 am ICT",
+    "ttl": "60",
+    "location": {
+     "city": "Da Nang",
+     "country": "Vietnam",
+     "region": ""
+    },
+    "units": {
+     "distance": "mi",
+     "pressure": "in",
+     "speed": "mph",
+     "temperature": "F"
+    },
+    "wind": {
+     "chill": "70",
+     "direction": "330",
+     "speed": "5"
+    },
+    "atmosphere": {
+     "humidity": "88",
+     "pressure": "30.12",
+     "rising": "2",
+     "visibility": "2.67"
+    },
+    "astronomy": {
+     "sunrise": "6:16 am",
+     "sunset": "5:45 pm"
+    },
+    "image": {
+     "title": "Yahoo! Weather",
+     "width": "142",
+     "height": "18",
+     "link": "http://weather.yahoo.com",
+     "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+    },
+    "item": {
+     "title": "Conditions for Da Nang, VN at 11:00 am ICT",
+     "lat": "16.07",
+     "long": "108.2",
+     "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Da_Nang__VN/*http://weather.yahoo.com/forecast/VMXX0028_f.html",
+     "pubDate": "Thu, 04 Feb 2016 11:00 am ICT",
+     "condition": {
+      "code": "11",
+      "date": "Thu, 04 Feb 2016 11:00 am ICT",
+      "temp": "70",
+      "text": "Light Rain"
+     },
+     "description": "\n<img src=\"http://l.yimg.com/a/i/us/we/52/11.gif\"/><br />\n<b>Current Conditions:</b><br />\nLight Rain, 70 F<BR />\n<BR /><b>Forecast:</b><BR />\nThu - Light Rain. High: 75 Low: 67<br />\nFri - Rain. High: 72 Low: 65<br />\nSat - Showers. High: 69 Low: 62<br />\nSun - AM Showers. High: 68 Low: 60<br />\nMon - PM Showers. High: 69 Low: 63<br />\n<br />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Da_Nang__VN/*http://weather.yahoo.com/forecast/VMXX0028_f.html\">Full Forecast at Yahoo! Weather</a><BR/><BR/>\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)<br/>\n",
+     "forecast": [
+      {
+       "code": "11",
+       "date": "4 Feb 2016",
+       "day": "Thu",
+       "high": "75",
+       "low": "67",
+       "text": "Light Rain"
+      },
+      {
+       "code": "12",
+       "date": "5 Feb 2016",
+       "day": "Fri",
+       "high": "72",
+       "low": "65",
+       "text": "Rain"
+      },
+      {
+       "code": "11",
+       "date": "6 Feb 2016",
+       "day": "Sat",
+       "high": "69",
+       "low": "62",
+       "text": "Showers"
+      },
+      {
+       "code": "39",
+       "date": "7 Feb 2016",
+       "day": "Sun",
+       "high": "68",
+       "low": "60",
+       "text": "AM Showers"
+      },
+      {
+       "code": "39",
+       "date": "8 Feb 2016",
+       "day": "Mon",
+       "high": "69",
+       "low": "63",
+       "text": "PM Showers"
+      }
+     ],
+     "guid": {
+      "isPermaLink": "false",
+      "content": "VMXX0028_2016_02_08_7_00_ICT"
+     }
+    }
+   }
+  }
+ }
+}
