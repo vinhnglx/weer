@@ -51,7 +51,7 @@ class Wetter
   #     | 5 Feb 2016 | 65  | 72   | Rain       |
   #     +------------+-----+------+------------+
   #
-  # Return the table object
+  # Returns the table object
   def parse_forecast(raw_fore_casts, temperature)
     forecast_rows = []
 
@@ -180,6 +180,8 @@ class Wetter
     #
     #   fahren_to_cel(72)
     #   # => 22
+    #
+    # Returns the Celsius
     def fahren_to_cel(temp)
       (temp.to_i - 32) * 5 / 9
     end
