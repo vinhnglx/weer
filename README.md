@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/vinhnglx/weer.svg?branch=develop)](https://travis-ci.org/vinhnglx/weer)
 [![Coverage Status](https://coveralls.io/repos/github/vinhnglx/weer/badge.svg?branch=develop)](https://coveralls.io/github/vinhnglx/weer?branch=develop)
 
-A simple CLI display the weather information.
+A simple CLI display the weather information. You also can use [Weer-bot](https://github.com/vinhnglx/slack-weer-bot) through Slack to know the weather information.
 
 ## Installation
 
