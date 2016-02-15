@@ -21,7 +21,7 @@ module Weer
         wetter = Wetter.new options[:city]
         response = wetter.connect
 
-        raise FakeURLInvalid if response['query']['results'].nil?
+        raise InvalidCity, "Oops, hey man! looks like your city is wrong" if response['query']['results'].nil?
         forecasts = wetter.forecast response
 
         puts Rainbow(" The forecast(#{options[:temperature]}) of #{options[:city].upcase!} in the next coming days ".center(80, '=')).green
