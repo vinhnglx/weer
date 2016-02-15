@@ -1,6 +1,5 @@
 require 'webmock/rspec'
 require 'coveralls'
-require 'byebug'
 require 'weer'
 
 WebMock.disable_net_connect!(allow_localhost: true)

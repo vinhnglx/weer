@@ -3,11 +3,13 @@ require 'terminal-table'
 
 class Wetter
   # Set attributes reader
-  attr_reader :city
+  attr_reader :options
+
+  # include HTTParty
+  include HTTParty
 
   # Instance variable
-  BASE_URL = 'https://query.yahooapis.com/v1/public/yql?q='
-  FORMAT_RESPONSE = '&format=json&env=store://datatables.org/alltableswithkeys'
+  base_uri 'query.yahooapis.com'
 
   # Create constructor Wetter object
   #
@@ -19,7 +21,7 @@ class Wetter
   #
   # Returns nothing
   def initialize(city)
-    @city = city.downcase
+    @options = { query: { q: yql_city(city), format: 'json', env: 'store://datatables.org/alltableswithkeys' } }
   end
 
   # Make an http request to Yahoo Weather API
@@ -31,9 +33,8 @@ class Wetter
   #
   # Returns the Hash response
   def connect
-    url = URI.parse(URI.encode((BASE_URL + yql_city + FORMAT_RESPONSE).strip))
-    request = HTTParty.get(url)
-    request.code == 200 ? JSON.parse(request.body) : nil
+    response = self.class.get('/v1/public/yql', options)
+    response.code == 200 ? JSON.parse(response.body) : nil
   end
 
   # Parse the forecasts to table
@@ -166,7 +167,7 @@ class Wetter
   #   # => "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"Da Nang\")"
   #
   # Returns an query
-  def yql_city
+  def yql_city(city)
     "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"#{city}\")"
   end
 
