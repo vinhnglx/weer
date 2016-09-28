@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*']
   spec.executables   = 'weer'
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 10.0'
